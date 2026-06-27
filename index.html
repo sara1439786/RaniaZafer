@@ -4,224 +4,2202 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Rania Zafer — Marketing Analytics & Data Analyst</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js">
-/* Soft 3D live-card tilt movement */
-document.querySelectorAll('.live-card,.card,.kpi-card,.wf,.skill,.contact-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-.5;
-    const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateY(-4px)`;
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform='';});
-});
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--red:#E8294A;--pink:#FFF0F3;--pink2:#FFD6DD;--navy:#0D1B2A;--ink:#17263A;--slate:#3D5166;--muted:#6B7C93;--soft:#F7F9FC;--white:#fff;--teal:#0A7EA4;--gold:#C9933A;--purple:#5B4FCA;--green:#1B7A4E;--coffee:#7B4B2A;--border:rgba(13,27,42,.10);--shadow:0 28px 80px rgba(13,27,42,.12)}
+
+:root{
+  --red:#E8294A;
+  --pink:#FFF0F3;
+  --pink2:#FFD6DD;
+  --navy:#0D1B2A;
+  --ink:#17263A;
+  --slate:#3D5166;
+  --muted:#6B7C93;
+  --soft:#F7F9FC;
+  --white:#fff;
+  --teal:#0A7EA4;
+  --gold:#C9933A;
+  --purple:#5B4FCA;
+  --green:#1B7A4E;
+  --coffee:#7B4B2A;
+  --border:rgba(13,27,42,.10);
+  --shadow:0 28px 80px rgba(13,27,42,.12);
+}
+
 html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,sans-serif;color:var(--navy);background:#fff;line-height:1.65;overflow-x:hidden}
-#bgc{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.32}
-.noise{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(13,27,42,.055) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(to bottom,#000,transparent)}
-nav{position:fixed;top:0;left:0;right:0;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;z-index:50;background:rgba(255,255,255,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(13,27,42,.06)}
-.logo{font-family:'Playfair Display',serif;font-size:23px;font-weight:800;letter-spacing:-.5px;color:var(--navy)}.logo span{color:var(--red)}
-.nav-links{display:flex;align-items:center;gap:18px}.nav-links a{font-size:12px;text-decoration:none;color:var(--slate);font-weight:700}.nav-hire{background:var(--red)!important;color:#fff!important;padding:10px 18px;border-radius:999px;box-shadow:0 12px 30px rgba(232,41,74,.22)}
-.sec{position:relative;z-index:1;padding:96px 6% 78px}.sec-alt{background:linear-gradient(180deg,#F9FBFE 0%,#fff 100%)}.sec-dark{background:radial-gradient(circle at 20% 10%,rgba(232,41,74,.15),transparent 26%),radial-gradient(circle at 80% 30%,rgba(10,126,164,.18),transparent 28%),var(--navy);color:#fff}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:var(--red);margin-bottom:10px}.rule{width:48px;height:3px;background:var(--red);border-radius:999px;margin-bottom:14px}
-.sh{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,52px);line-height:1.06;letter-spacing:-1px;margin-bottom:14px;color:var(--navy)}.sec-dark .sh{color:#fff}.sub{font-size:15px;color:var(--muted);max-width:680px;line-height:1.85;margin-bottom:42px}.sec-dark .sub{color:rgba(255,255,255,.66)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.vis{opacity:1;transform:translateY(0)}
+
+body{
+  font-family:Inter,system-ui,sans-serif;
+  color:var(--navy);
+  background:#fff;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+/* PREMIUM BACKGROUND */
+.page-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0%;
+  z-index:999;
+  background:linear-gradient(90deg,var(--red),var(--teal),var(--gold));
+  box-shadow:0 0 18px rgba(232,41,74,.35);
+}
+
+.premium-bg{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(circle at 18% 20%,rgba(232,41,74,.08),transparent 28%),
+    radial-gradient(circle at 82% 16%,rgba(10,126,164,.08),transparent 30%),
+    radial-gradient(circle at 50% 85%,rgba(201,147,58,.07),transparent 32%),
+    linear-gradient(180deg,#ffffff 0%,#fbfcff 44%,#ffffff 100%);
+}
+
+.bg-orb{
+  position:absolute;
+  border-radius:999px;
+  filter:blur(28px);
+  opacity:.34;
+  mix-blend-mode:multiply;
+  animation:premiumFloat 16s ease-in-out infinite;
+}
+
+.orb-red{
+  width:330px;
+  height:330px;
+  left:-90px;
+  top:130px;
+  background:rgba(232,41,74,.24);
+}
+
+.orb-teal{
+  width:360px;
+  height:360px;
+  right:-120px;
+  top:170px;
+  background:rgba(10,126,164,.20);
+  animation-delay:-4s;
+}
+
+.orb-gold{
+  width:300px;
+  height:300px;
+  left:34%;
+  bottom:-110px;
+  background:rgba(201,147,58,.18);
+  animation-delay:-8s;
+}
+
+.orb-purple{
+  width:260px;
+  height:260px;
+  right:24%;
+  bottom:16%;
+  background:rgba(91,79,202,.14);
+  animation-delay:-11s;
+}
+
+@keyframes premiumFloat{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  35%{transform:translate3d(38px,-34px,0) scale(1.06)}
+  70%{transform:translate3d(-26px,28px,0) scale(.96)}
+}
+
+.soft-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(13,27,42,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,27,42,.035) 1px, transparent 1px);
+  background-size:58px 58px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.52),transparent 76%);
+  opacity:.42;
+}
+
+.cursor-glow{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+  opacity:.18;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(232,41,74,.32),transparent 62%);
+  transition:opacity .25s ease;
+}
+
+#bgc{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+  opacity:.28;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:radial-gradient(rgba(13,27,42,.055) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(to bottom,#000,transparent);
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  z-index:50;
+  background:rgba(255,255,255,.84);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(13,27,42,.06);
+}
+
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:-.5px;
+  color:var(--navy);
+}
+
+.logo span{color:var(--red)}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.nav-links a{
+  font-size:12px;
+  text-decoration:none;
+  color:var(--slate);
+  font-weight:800;
+}
+
+.nav-hire{
+  background:var(--red)!important;
+  color:#fff!important;
+  padding:10px 18px;
+  border-radius:999px;
+  box-shadow:0 12px 30px rgba(232,41,74,.22);
+}
+
+/* COMMON */
+.sec{
+  position:relative;
+  z-index:2;
+  padding:96px 6% 78px;
+}
+
+.sec-alt{
+  background:linear-gradient(180deg,rgba(249,251,254,.92) 0%,rgba(255,255,255,.92) 100%);
+}
+
+.sec-dark{
+  background:
+    radial-gradient(circle at 20% 10%,rgba(232,41,74,.15),transparent 26%),
+    radial-gradient(circle at 80% 30%,rgba(10,126,164,.18),transparent 28%),
+    var(--navy);
+  color:#fff;
+}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:10px;
+}
+
+.rule{
+  width:48px;
+  height:3px;
+  background:var(--red);
+  border-radius:999px;
+  margin-bottom:14px;
+}
+
+.sh{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,4vw,52px);
+  line-height:1.06;
+  letter-spacing:-1px;
+  margin-bottom:14px;
+  color:var(--navy);
+}
+
+.sec-dark .sh{color:#fff}
+
+.sub{
+  font-size:15px;
+  color:var(--muted);
+  max-width:720px;
+  line-height:1.85;
+  margin-bottom:42px;
+}
+
+.sec-dark .sub{color:rgba(255,255,255,.66)}
+
+.reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.vis{
+  opacity:1;
+  transform:translateY(0);
+}
+
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:center;padding:112px 6% 70px;background:radial-gradient(circle at 72% 18%,rgba(255,214,221,.65),transparent 32%),radial-gradient(circle at 8% 72%,rgba(225,245,238,.7),transparent 28%),#fff}
-.hero-g{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center;max-width:1240px;margin:auto;width:100%}
-.badge{display:inline-flex;align-items:center;gap:8px;background:var(--pink);border:1px solid var(--pink2);color:var(--red);padding:7px 15px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:22px}.dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(232,41,74,.5);animation:pulse 1.7s infinite}@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(232,41,74,0)}}
-.hero-name{font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,82px);line-height:.98;letter-spacing:-2.5px;margin-bottom:10px}.hero-name em{font-style:normal;color:var(--red)}
-.hero-role{height:28px;color:var(--slate);font-weight:700;font-size:17px;margin-bottom:14px}.cursor{display:inline-block;width:2px;height:18px;background:var(--red);margin-left:4px;vertical-align:-3px;animation:blink .8s step-end infinite}@keyframes blink{50%{opacity:0}}
-.hero-desc{font-size:16px;color:var(--muted);max-width:560px;margin-bottom:30px;line-height:1.9}.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:38px}.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:12px;padding:13px 22px;font-size:13px;font-weight:800;transition:.25s}.btn-red{background:var(--red);color:#fff;box-shadow:0 14px 34px rgba(232,41,74,.22)}.btn-red:hover,.btn-out:hover{transform:translateY(-2px)}.btn-out{border:1.5px solid var(--border);color:var(--navy);background:rgba(255,255,255,.66)}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:580px}.hstat{background:rgba(255,255,255,.72);border:1px solid rgba(13,27,42,.07);border-radius:16px;padding:15px 14px;box-shadow:0 12px 32px rgba(13,27,42,.05)}.hstat-n{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--navy)}.hstat-n span{color:var(--red)}.hstat-l{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.profile-stage{position:relative;min-height:590px;display:flex;align-items:center;justify-content:center;perspective:1200px}.orb{position:absolute;border-radius:50%;filter:blur(1px);animation:orbit 12s linear infinite}.orb.o1{width:90px;height:90px;background:rgba(232,41,74,.14);top:10%;left:6%}.orb.o2{width:70px;height:70px;background:rgba(10,126,164,.15);right:4%;bottom:18%;animation-duration:15s}@keyframes orbit{50%{transform:translateY(28px) translateX(18px) scale(1.08)}}
-.photo-card{position:relative;width:min(410px,92vw);border-radius:32px;padding:14px;background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,240,243,.72));border:1px solid rgba(255,255,255,.78);box-shadow:var(--shadow);animation:float 5.5s ease-in-out infinite;transform-style:preserve-3d}@keyframes float{50%{transform:translateY(-14px) rotateX(2deg) rotateY(-2deg)}}
-.photo-card:before{content:'';position:absolute;inset:-3px;border-radius:34px;background:conic-gradient(from 90deg,var(--red),var(--teal),var(--gold),var(--purple),var(--red));z-index:-1;opacity:.28;filter:blur(7px);animation:spin 8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.photo-card img{width:100%;height:500px;object-fit:cover;object-position:center top;border-radius:24px;display:block;filter:saturate(1.02) contrast(1.02)}
-.float-chip{position:absolute;background:#fff;border:1px solid rgba(13,27,42,.08);border-radius:16px;padding:12px 14px;box-shadow:0 16px 38px rgba(13,27,42,.13);animation:bob 4s ease-in-out infinite}.float-chip b{display:block;font-size:18px;font-family:'Playfair Display',serif;color:var(--red)}.float-chip small{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:800}.fc1{left:-34px;top:96px}.fc2{right:-26px;bottom:90px;animation-delay:1s}@keyframes bob{50%{transform:translateY(-10px)}}
+#hero{
+  position:relative;
+  z-index:2;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:112px 6% 70px;
+  background:
+    radial-gradient(circle at 72% 18%,rgba(255,214,221,.55),transparent 32%),
+    radial-gradient(circle at 8% 72%,rgba(225,245,238,.58),transparent 28%);
+}
+
+.hero-g{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:58px;
+  align-items:center;
+  max-width:1240px;
+  margin:auto;
+  width:100%;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--pink);
+  border:1px solid var(--pink2);
+  color:var(--red);
+  padding:7px 15px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--red);
+  box-shadow:0 0 0 0 rgba(232,41,74,.5);
+  animation:pulse 1.7s infinite;
+}
+
+@keyframes pulse{
+  70%{box-shadow:0 0 0 10px rgba(232,41,74,0)}
+}
+
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(48px,6vw,82px);
+  line-height:.98;
+  letter-spacing:-2.5px;
+  margin-bottom:10px;
+}
+
+.hero-name em{
+  font-style:normal;
+  color:var(--red);
+}
+
+.hero-role{
+  height:28px;
+  color:var(--slate);
+  font-weight:800;
+  font-size:17px;
+  margin-bottom:14px;
+}
+
+.cursor{
+  display:inline-block;
+  width:2px;
+  height:18px;
+  background:var(--red);
+  margin-left:4px;
+  vertical-align:-3px;
+  animation:blink .8s step-end infinite;
+}
+
+@keyframes blink{50%{opacity:0}}
+
+.hero-desc{
+  font-size:16px;
+  color:var(--muted);
+  max-width:560px;
+  margin-bottom:30px;
+  line-height:1.9;
+}
+
+.ctas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:38px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  border-radius:12px;
+  padding:13px 22px;
+  font-size:13px;
+  font-weight:900;
+  transition:.25s;
+}
+
+.btn-red{
+  background:var(--red);
+  color:#fff;
+  box-shadow:0 14px 34px rgba(232,41,74,.22);
+}
+
+.btn-out{
+  border:1.5px solid var(--border);
+  color:var(--navy);
+  background:rgba(255,255,255,.66);
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  max-width:580px;
+}
+
+.hstat{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(13,27,42,.07);
+  border-radius:16px;
+  padding:15px 14px;
+  box-shadow:0 12px 32px rgba(13,27,42,.05);
+}
+
+.hstat-n{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  font-weight:800;
+  color:var(--navy);
+}
+
+.hstat-n span{color:var(--red)}
+
+.hstat-l{
+  font-size:10px;
+  font-weight:800;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.profile-stage{
+  position:relative;
+  min-height:590px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  perspective:1200px;
+}
+
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(1px);
+  animation:orbit 12s linear infinite;
+}
+
+.orb.o1{
+  width:90px;
+  height:90px;
+  background:rgba(232,41,74,.14);
+  top:10%;
+  left:6%;
+}
+
+.orb.o2{
+  width:70px;
+  height:70px;
+  background:rgba(10,126,164,.15);
+  right:4%;
+  bottom:18%;
+  animation-duration:15s;
+}
+
+@keyframes orbit{
+  50%{transform:translateY(28px) translateX(18px) scale(1.08)}
+}
+
+.photo-card{
+  position:relative;
+  width:min(410px,92vw);
+  border-radius:32px;
+  padding:14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.82),rgba(255,240,243,.72));
+  border:1px solid rgba(255,255,255,.78);
+  box-shadow:var(--shadow);
+  animation:float 5.5s ease-in-out infinite;
+  transform-style:preserve-3d;
+}
+
+@keyframes float{
+  50%{transform:translateY(-14px) rotateX(2deg) rotateY(-2deg)}
+}
+
+.photo-card:before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:34px;
+  background:conic-gradient(from 90deg,var(--red),var(--teal),var(--gold),var(--purple),var(--red));
+  z-index:-1;
+  opacity:.28;
+  filter:blur(7px);
+  animation:spin 8s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.photo-card img{
+  width:100%;
+  height:500px;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:24px;
+  display:block;
+  filter:saturate(1.02) contrast(1.02);
+}
+
+.photo-missing::after{
+  content:'RZ';
+  height:500px;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--pink),#e9f7f5);
+  display:grid;
+  place-items:center;
+  font-family:'Playfair Display',serif;
+  font-size:82px;
+  color:var(--red);
+  font-weight:800;
+}
+
+.float-chip{
+  position:absolute;
+  background:#fff;
+  border:1px solid rgba(13,27,42,.08);
+  border-radius:16px;
+  padding:12px 14px;
+  box-shadow:0 16px 38px rgba(13,27,42,.13);
+  animation:bob 4s ease-in-out infinite;
+}
+
+.float-chip b{
+  display:block;
+  font-size:18px;
+  font-family:'Playfair Display',serif;
+  color:var(--red);
+}
+
+.float-chip small{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  color:var(--muted);
+  font-weight:900;
+}
+
+.fc1{left:-34px;top:96px}
+.fc2{right:-26px;bottom:90px;animation-delay:1s}
+
+@keyframes bob{50%{transform:translateY(-10px)}}
+
 /* CARDS */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:24px;box-shadow:0 18px 50px rgba(13,27,42,.06);transition:.28s;position:relative;overflow:hidden}.card:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(13,27,42,.10)}.card:after{content:'';position:absolute;left:0;bottom:0;width:100%;height:4px;background:linear-gradient(90deg,var(--red),var(--teal),var(--gold));transform:scaleX(0);transform-origin:left;transition:.3s}.card:hover:after{transform:scaleX(1)}.icon{font-size:30px;margin-bottom:12px}.card h3{font-size:16px;margin-bottom:6px}.card p{font-size:13px;color:var(--muted);line-height:1.75}
-.about-g{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:start}.bio-panel{background:#fff;border:1px solid var(--border);border-radius:28px;padding:30px;box-shadow:var(--shadow)}.bio-line{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid rgba(13,27,42,.06);font-size:13px}.bio-line:last-child{border-bottom:0}.bio-line span{color:var(--muted)}.bio-line b{text-align:right;color:var(--navy)}
-/* ROTATING KPI DASHBOARD */
-.kpi-dash{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px;align-items:stretch}.kpi-stack{display:grid;grid-template-columns:1fr 1fr;gap:14px}.kpi-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:20px;position:relative;overflow:hidden}.kpi-card b{font-family:'Playfair Display',serif;font-size:32px;color:var(--navy)}.kpi-card b em{font-style:normal;color:var(--red)}.kpi-card p{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.5px}.kpi-card .move{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--pink);display:grid;place-items:center;animation:pop 2s infinite}@keyframes pop{50%{transform:scale(1.12)}}
-.chart-card{background:#fff;border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.chart-top{display:flex;align-items:start;justify-content:space-between;gap:18px;margin-bottom:12px}.chart-top h3{font-size:16px}.chart-top p{font-size:12px;color:var(--muted)}.pill{font-size:10px;font-weight:800;color:#fff;background:var(--red);padding:5px 10px;border-radius:999px;white-space:nowrap}.chart-wrap{height:310px;position:relative}.chart-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.tab{border:none;background:var(--soft);color:var(--slate);font-weight:800;font-size:11px;padding:8px 12px;border-radius:999px;cursor:pointer}.tab.active{background:var(--red);color:#fff}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 18px 50px rgba(13,27,42,.06);
+  transition:.28s;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 64px rgba(13,27,42,.10);
+}
+
+.card:after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--red),var(--teal),var(--gold));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:.3s;
+}
+
+.card:hover:after{transform:scaleX(1)}
+
+.icon{
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.card h3{
+  font-size:16px;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.75;
+}
+
+/* ABOUT */
+.about-g{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:36px;
+  align-items:start;
+}
+
+.bio-panel{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:var(--shadow);
+}
+
+.bio-line{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(13,27,42,.06);
+  font-size:13px;
+}
+
+.bio-line:last-child{border-bottom:0}
+
+.bio-line span{color:var(--muted)}
+
+.bio-line b{
+  text-align:right;
+  color:var(--navy);
+}
+
+/* KPI */
+.kpi-dash{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:22px;
+  align-items:stretch;
+}
+
+.kpi-stack{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.kpi-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+  animation:softCardFloat 6s ease-in-out infinite;
+}
+
+.kpi-card:nth-child(2){animation-delay:-1.5s}
+.kpi-card:nth-child(3){animation-delay:-3s}
+.kpi-card:nth-child(4){animation-delay:-4.5s}
+
+@keyframes softCardFloat{
+  0%,100%{translate:0 0}
+  50%{translate:0 -6px}
+}
+
+.kpi-card b{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  color:var(--navy);
+}
+
+.kpi-card b em{
+  font-style:normal;
+  color:var(--red);
+}
+
+.kpi-card p{
+  font-size:11px;
+  color:var(--muted);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.kpi-card .move{
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:var(--pink);
+  display:grid;
+  place-items:center;
+  animation:pop 2s infinite;
+}
+
+@keyframes pop{50%{transform:scale(1.12)}}
+
+.chart-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+
+.chart-top{
+  display:flex;
+  align-items:start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:12px;
+}
+
+.chart-top h3{font-size:16px}
+
+.chart-top p{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.pill{
+  font-size:10px;
+  font-weight:900;
+  color:#fff;
+  background:var(--red);
+  padding:5px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+
+.chart-wrap{
+  height:310px;
+  position:relative;
+}
+
+.chart-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.tab{
+  border:none;
+  background:var(--soft);
+  color:var(--slate);
+  font-weight:900;
+  font-size:11px;
+  padding:8px 12px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:var(--red);
+  color:#fff;
+}
+
 /* WORKFLOW */
-.workflow{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative}.wf{background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px;min-height:170px;position:relative;overflow:hidden}.wf-num{width:32px;height:32px;border-radius:50%;background:var(--pink);color:var(--red);font-weight:900;display:grid;place-items:center;margin-bottom:12px}.wf h3{font-size:14px;line-height:1.35;margin-bottom:7px}.wf p{font-size:12px;color:var(--muted);line-height:1.55}.wf:before{content:'';position:absolute;top:0;left:-100%;height:100%;width:60%;background:linear-gradient(90deg,transparent,rgba(232,41,74,.10),transparent);animation:shine 4s infinite}.wf:nth-child(2):before{animation-delay:.4s}.wf:nth-child(3):before{animation-delay:.8s}.wf:nth-child(4):before{animation-delay:1.2s}.wf:nth-child(5):before{animation-delay:1.6s}.wf:nth-child(6):before{animation-delay:2s}@keyframes shine{45%,100%{left:150%}}
+.workflow{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+  position:relative;
+}
+
+.wf{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  min-height:170px;
+  position:relative;
+  overflow:hidden;
+}
+
+.wf-num{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--pink);
+  color:var(--red);
+  font-weight:900;
+  display:grid;
+  place-items:center;
+  margin-bottom:12px;
+}
+
+.wf h3{
+  font-size:14px;
+  line-height:1.35;
+  margin-bottom:7px;
+}
+
+.wf p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.wf:before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  height:100%;
+  width:60%;
+  background:linear-gradient(90deg,transparent,rgba(232,41,74,.10),transparent);
+  animation:shine 4s infinite;
+}
+
+.wf:nth-child(2):before{animation-delay:.4s}
+.wf:nth-child(3):before{animation-delay:.8s}
+.wf:nth-child(4):before{animation-delay:1.2s}
+.wf:nth-child(5):before{animation-delay:1.6s}
+.wf:nth-child(6):before{animation-delay:2s}
+
+@keyframes shine{
+  45%,100%{left:150%}
+}
+
+/* RECRUITER */
+.recruiter-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:20px;
+  align-items:stretch;
+}
+
+.ats-list{
+  display:grid;
+  gap:11px;
+}
+
+.ats-item{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:14px;
+  border-radius:16px;
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:0 14px 36px rgba(13,27,42,.05);
+  position:relative;
+  overflow:hidden;
+}
+
+.ats-item span{
+  width:30px;
+  height:30px;
+  border-radius:10px;
+  background:var(--pink);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+}
+
+.ats-item b{
+  display:block;
+  font-size:13px;
+  color:var(--navy);
+  margin-bottom:2px;
+}
+
+.ats-item small{
+  font-size:11px;
+  color:var(--muted);
+  line-height:1.55;
+  display:block;
+}
+
+.score-card{
+  background:linear-gradient(135deg,var(--navy),#20354d);
+  border-radius:28px;
+  color:#fff;
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.score-card:before{
+  content:'';
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:rgba(232,41,74,.25);
+  right:-90px;
+  top:-90px;
+}
+
+.score-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  line-height:1.1;
+  margin-bottom:10px;
+  position:relative;
+}
+
+.score-card p{
+  color:rgba(255,255,255,.68);
+  font-size:13px;
+  line-height:1.75;
+  margin-bottom:18px;
+  position:relative;
+}
+
+.score-metrics{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  position:relative;
+}
+
+.score-metric{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.10);
+  padding:14px;
+  border-radius:16px;
+}
+
+.score-metric b{
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  color:#fff;
+  display:block;
+}
+
+.score-metric small{
+  font-size:10px;
+  color:rgba(255,255,255,.62);
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+
+.recruiter-strip{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  margin-top:22px;
+  padding:10px;
+  background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(255,240,243,.46));
+  border:1px solid rgba(13,27,42,.08);
+  box-shadow:var(--shadow);
+}
+
+.scroll-row{
+  display:flex;
+  gap:16px;
+  width:max-content;
+  animation:scrollCards 30s linear infinite;
+}
+
+.recruiter-strip:hover .scroll-row{
+  animation-play-state:paused;
+}
+
+@keyframes scrollCards{
+  to{transform:translateX(-50%)}
+}
+
+.scroll-card{
+  width:280px;
+  min-height:168px;
+  border-radius:22px;
+  background:#fff;
+  border:1px solid rgba(13,27,42,.08);
+  padding:20px;
+  box-shadow:0 18px 46px rgba(13,27,42,.07);
+  position:relative;
+  overflow:hidden;
+}
+
+.scroll-card:before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 80% 10%,rgba(232,41,74,.14),transparent 30%);
+  pointer-events:none;
+}
+
+.scroll-card .sicon{
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.scroll-card h3{
+  font-size:15px;
+  margin-bottom:6px;
+  color:var(--navy);
+}
+
+.scroll-card p{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.65;
+}
+
 /* CASE STUDY */
-.case-head{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}.brand-card{border-radius:24px;padding:26px;color:#fff;position:relative;overflow:hidden;min-height:190px}.brand-card h3{font-family:'Playfair Display',serif;font-size:30px;margin-bottom:6px}.brand-card p{font-size:13px;line-height:1.75;opacity:.84}.brand-card .brand-mini{position:absolute;right:18px;bottom:14px;font-size:52px;opacity:.18}.star{background:linear-gradient(135deg,#006241,#0A7EA4)}.ccd{background:linear-gradient(135deg,#7B4B2A,#C9933A)}
-.case-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.insight-list{display:grid;gap:12px}.insight{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:16px}.insight b{display:block;color:#fff;margin-bottom:3px}.insight span{font-size:12px;color:rgba(255,255,255,.65);line-height:1.65}.dark-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:24px}.dark-card h3{font-size:16px;margin-bottom:4px}.dark-card p{font-size:12px;color:rgba(255,255,255,.62);line-height:1.7;margin-bottom:12px}.dark-chart{height:285px;position:relative}
+.case-head{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-bottom:20px;
+}
+
+.brand-card{
+  border-radius:24px;
+  padding:26px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  min-height:190px;
+}
+
+.brand-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  margin-bottom:6px;
+}
+
+.brand-card p{
+  font-size:13px;
+  line-height:1.75;
+  opacity:.84;
+}
+
+.brand-card .brand-mini{
+  position:absolute;
+  right:18px;
+  bottom:14px;
+  font-size:52px;
+  opacity:.18;
+}
+
+.star{background:linear-gradient(135deg,#006241,#0A7EA4)}
+.ccd{background:linear-gradient(135deg,#7B4B2A,#C9933A)}
+
+.case-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+}
+
+.dark-card{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;
+  padding:24px;
+}
+
+.dark-card h3{
+  font-size:16px;
+  margin-bottom:4px;
+}
+
+.dark-card p{
+  font-size:12px;
+  color:rgba(255,255,255,.62);
+  line-height:1.7;
+  margin-bottom:12px;
+}
+
+.dark-chart{
+  height:285px;
+  position:relative;
+}
+
+.insight-list{
+  display:grid;
+  gap:12px;
+}
+
+.insight{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  padding:16px;
+}
+
+.insight b{
+  display:block;
+  color:#fff;
+  margin-bottom:3px;
+}
+
+.insight span{
+  font-size:12px;
+  color:rgba(255,255,255,.65);
+  line-height:1.65;
+}
+
 /* EXPERIENCE */
-.timeline{position:relative;display:grid;gap:18px}.exp{display:grid;grid-template-columns:220px 1fr;gap:22px;background:#fff;border:1px solid var(--border);border-radius:24px;padding:24px;box-shadow:0 18px 50px rgba(13,27,42,.06)}.exp-date{font-size:12px;color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.8px}.exp h3{font-size:20px;margin-bottom:3px}.exp h4{font-size:13px;color:var(--red);margin-bottom:12px}.exp li{font-size:13px;color:var(--slate);margin:8px 0 0 18px;line-height:1.65}
-.skills-g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.skill{background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px}.skill h3{font-size:14px;margin-bottom:12px}.bar{height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin:10px 0 14px}.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--red),var(--teal));width:0;transition:width 1.2s cubic-bezier(.22,1,.36,1)}.skill small{color:var(--muted);font-size:11px;line-height:1.55;display:block}
-.contact-g{display:grid;grid-template-columns:1fr 1fr;gap:36px}.contact-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:18px;text-decoration:none;color:inherit;margin-bottom:12px;transition:.22s}.contact-card:hover{transform:translateX(5px);border-color:var(--red)}.c-ic{width:44px;height:44px;border-radius:14px;background:var(--pink);display:grid;place-items:center;font-size:20px}.c-label{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:900}.c-val{font-size:14px;font-weight:700;color:var(--navy)}
-footer{position:relative;z-index:1;background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:28px;font-size:13px}footer strong{color:#fff}
-@media(max-width:980px){.hero-g,.about-g,.kpi-dash,.case-head,.case-grid,.contact-g{grid-template-columns:1fr}.workflow{grid-template-columns:repeat(3,1fr)}.skills-g,.grid-3{grid-template-columns:repeat(2,1fr)}.hero-stats{grid-template-columns:repeat(2,1fr)}.nav-links a:not(.nav-hire){display:none}}
-@media(max-width:620px){nav{padding:0 4%}.sec,#hero{padding-left:5%;padding-right:5%}.photo-card img{height:420px}.float-chip{display:none}.workflow,.skills-g,.grid-2,.grid-3,.kpi-stack{grid-template-columns:1fr}.exp{grid-template-columns:1fr}}
+.timeline{
+  position:relative;
+  display:grid;
+  gap:18px;
+}
 
-/* V3 RECRUITER POLISH + LIVE MOVEMENT */
-.photo-missing::after{content:'RZ';height:500px;border-radius:24px;background:linear-gradient(135deg,var(--pink),#e9f7f5);display:grid;place-items:center;font-family:'Playfair Display',serif;font-size:82px;color:var(--red);font-weight:800}
-.live-card{will-change:transform;transform-style:preserve-3d;transition:transform .18s ease,box-shadow .28s ease}.live-card:hover{box-shadow:0 30px 80px rgba(13,27,42,.16)}
-.recruiter-strip{position:relative;overflow:hidden;border-radius:28px;margin-top:22px;padding:10px;background:linear-gradient(135deg,rgba(255,255,255,.78),rgba(255,240,243,.46));border:1px solid rgba(13,27,42,.08);box-shadow:var(--shadow)}
-.scroll-row{display:flex;gap:16px;width:max-content;animation:scrollCards 30s linear infinite}.recruiter-strip:hover .scroll-row{animation-play-state:paused}@keyframes scrollCards{to{transform:translateX(-50%)}}
-.scroll-card{width:280px;min-height:168px;border-radius:22px;background:#fff;border:1px solid rgba(13,27,42,.08);padding:20px;box-shadow:0 18px 46px rgba(13,27,42,.07);position:relative;overflow:hidden}.scroll-card:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 10%,rgba(232,41,74,.14),transparent 30%);pointer-events:none}.scroll-card .sicon{font-size:26px;margin-bottom:8px}.scroll-card h3{font-size:15px;margin-bottom:6px;color:var(--navy)}.scroll-card p{font-size:12px;color:var(--muted);line-height:1.65}.scroll-card b{color:var(--red)}
-.recruiter-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch}.ats-list{display:grid;gap:11px}.ats-item{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:#fff;border:1px solid var(--border);box-shadow:0 14px 36px rgba(13,27,42,.05)}.ats-item span{width:30px;height:30px;border-radius:10px;background:var(--pink);display:grid;place-items:center;flex-shrink:0}.ats-item b{display:block;font-size:13px;color:var(--navy);margin-bottom:2px}.ats-item small{font-size:11px;color:var(--muted);line-height:1.55;display:block}.score-card{background:linear-gradient(135deg,var(--navy),#20354d);border-radius:28px;color:#fff;padding:28px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.score-card:before{content:'';position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(232,41,74,.25);right:-90px;top:-90px}.score-card h3{font-family:'Playfair Display',serif;font-size:30px;line-height:1.1;margin-bottom:10px}.score-card p{color:rgba(255,255,255,.68);font-size:13px;line-height:1.75;margin-bottom:18px}.score-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}.score-metric{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10);padding:14px;border-radius:16px}.score-metric b{font-family:'Playfair Display',serif;font-size:25px;color:#fff;display:block}.score-metric small{font-size:10px;color:rgba(255,255,255,.62);text-transform:uppercase;font-weight:800;letter-spacing:.5px}
-.contact-shell{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:stretch}.contact-profile{background:linear-gradient(135deg,#fff,var(--pink));border:1px solid var(--border);border-radius:30px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}.contact-profile:before{content:'';position:absolute;right:-70px;bottom:-70px;width:190px;height:190px;border-radius:50%;background:rgba(232,41,74,.12)}.mini-photo{width:96px;height:96px;border-radius:28px;object-fit:cover;object-position:center top;border:4px solid #fff;box-shadow:0 16px 40px rgba(13,27,42,.16);margin-bottom:16px}.contact-profile h3{font-family:'Playfair Display',serif;font-size:30px;line-height:1.05}.contact-profile p{font-size:13px;color:var(--muted);line-height:1.75;margin:10px 0 16px}.status-dot{display:inline-flex;align-items:center;gap:7px;background:#e9fbf2;color:#0c7044;font-weight:900;font-size:11px;padding:7px 12px;border-radius:999px}.status-dot:before{content:'';width:7px;height:7px;background:#18a35d;border-radius:50%;animation:pulse 1.6s infinite}
-.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:14px}.action-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:18px;text-decoration:none;color:inherit;transition:.25s;position:relative;overflow:hidden}.action-card:hover{transform:translateY(-5px);border-color:var(--red);box-shadow:0 20px 56px rgba(13,27,42,.10)}.action-card:after{content:'→';position:absolute;right:18px;font-weight:900;color:var(--red)}.a-ic{width:46px;height:46px;border-radius:16px;background:var(--pink);display:grid;place-items:center;font-size:22px;flex-shrink:0}.a-label{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:900}.a-val{font-size:13px;font-weight:800;color:var(--navy);margin-top:2px}.whatsapp .a-ic{background:#E8FFF1}.whatsapp:after{color:#159947}.call .a-ic{background:#EEF5FF}.linkedin .a-ic{background:#EDF1FF}.resume .a-ic{background:#FFF7EA}
-@media(max-width:980px){.recruiter-grid,.contact-shell{grid-template-columns:1fr}.contact-actions{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.scroll-card{width:245px}.contact-actions{grid-template-columns:1fr}.mini-photo{width:86px;height:86px}.score-metrics{grid-template-columns:1fr 1fr}}
+.exp{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:22px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:0 18px 50px rgba(13,27,42,.06);
+}
 
+.exp-date{
+  font-size:12px;
+  color:var(--red);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+.exp h3{
+  font-size:20px;
+  margin-bottom:3px;
+}
+
+.exp h4{
+  font-size:13px;
+  color:var(--red);
+  margin-bottom:12px;
+}
+
+.exp li{
+  font-size:13px;
+  color:var(--slate);
+  margin:8px 0 0 18px;
+  line-height:1.65;
+}
+
+/* SKILLS */
+.skills-g{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.skill{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+}
+
+.skill h3{
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.bar{
+  height:8px;
+  border-radius:99px;
+  background:var(--soft);
+  overflow:hidden;
+  margin:10px 0 14px;
+}
+
+.fill{
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg,var(--red),var(--teal));
+  width:0;
+  transition:width 1.2s cubic-bezier(.22,1,.36,1);
+}
+
+.skill small{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.55;
+  display:block;
+}
+
+/* CONTACT */
+.contact-shell{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:24px;
+  align-items:stretch;
+}
+
+.contact-profile{
+  background:linear-gradient(135deg,#fff,var(--pink));
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:26px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+
+.contact-profile:before{
+  content:'';
+  position:absolute;
+  right:-70px;
+  bottom:-70px;
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:rgba(232,41,74,.12);
+}
+
+.mini-photo{
+  width:96px;
+  height:96px;
+  border-radius:28px;
+  object-fit:cover;
+  object-position:center top;
+  border:4px solid #fff;
+  box-shadow:0 16px 40px rgba(13,27,42,.16);
+  margin-bottom:16px;
+  position:relative;
+}
+
+.contact-profile h3{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  line-height:1.05;
+  position:relative;
+}
+
+.contact-profile p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.75;
+  margin:10px 0 16px;
+  position:relative;
+}
+
+.status-dot{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  background:#e9fbf2;
+  color:#0c7044;
+  font-weight:900;
+  font-size:11px;
+  padding:7px 12px;
+  border-radius:999px;
+  margin-bottom:12px;
+  position:relative;
+}
+
+.status-dot:before{
+  content:'';
+  width:7px;
+  height:7px;
+  background:#18a35d;
+  border-radius:50%;
+  animation:pulse 1.6s infinite;
+}
+
+.contact-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.action-card{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  text-decoration:none;
+  color:inherit;
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+.action-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--red);
+  box-shadow:0 20px 56px rgba(13,27,42,.10);
+}
+
+.action-card:after{
+  content:'→';
+  position:absolute;
+  right:18px;
+  font-weight:900;
+  color:var(--red);
+}
+
+.a-ic{
+  width:46px;
+  height:46px;
+  border-radius:16px;
+  background:var(--pink);
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  flex-shrink:0;
+}
+
+.a-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  color:var(--muted);
+  font-weight:900;
+}
+
+.a-val{
+  font-size:13px;
+  font-weight:900;
+  color:var(--navy);
+  margin-top:2px;
+}
+
+.whatsapp .a-ic{background:#E8FFF1}
+.whatsapp:after{color:#159947}
+.call .a-ic{background:#EEF5FF}
+.linkedin .a-ic{background:#EDF1FF}
+.resume .a-ic{background:#FFF7EA}
+
+/* SHINE + LIVE EFFECT */
+.live-card,
+.card,
+.kpi-card,
+.wf,
+.skill,
+.action-card,
+.ats-item,
+.score-card,
+.contact-profile,
+.chart-card,
+.dark-card,
+.brand-card{
+  transform-style:preserve-3d;
+  will-change:transform;
+  transition:transform .18s ease,box-shadow .28s ease;
+}
+
+.live-card:hover,
+.card:hover,
+.kpi-card:hover,
+.wf:hover,
+.skill:hover,
+.action-card:hover,
+.ats-item:hover,
+.score-card:hover,
+.chart-card:hover,
+.dark-card:hover,
+.brand-card:hover{
+  box-shadow:0 30px 80px rgba(13,27,42,.16);
+}
+
+.card::before,
+.kpi-card::before,
+.wf::after,
+.skill::before,
+.action-card::before,
+.ats-item::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,.46) 45%,transparent 70%);
+  transform:translateX(-120%);
+  transition:transform .75s ease;
+  pointer-events:none;
+}
+
+.card:hover::before,
+.kpi-card:hover::before,
+.wf:hover::after,
+.skill:hover::before,
+.action-card:hover::before,
+.ats-item:hover::before{
+  transform:translateX(120%);
+}
+
+footer{
+  position:relative;
+  z-index:2;
+  background:var(--navy);
+  color:rgba(255,255,255,.55);
+  text-align:center;
+  padding:28px;
+  font-size:13px;
+}
+
+footer strong{color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hero-g,
+  .about-g,
+  .kpi-dash,
+  .case-head,
+  .case-grid,
+  .contact-shell,
+  .recruiter-grid{
+    grid-template-columns:1fr;
+  }
+
+  .workflow{grid-template-columns:repeat(3,1fr)}
+  .skills-g,.grid-3{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .contact-actions{grid-template-columns:1fr 1fr}
+  .nav-links a:not(.nav-hire){display:none}
+}
+
+@media(max-width:620px){
+  nav{padding:0 4%}
+  .sec,#hero{padding-left:5%;padding-right:5%}
+  .photo-card img{height:420px}
+  .photo-missing::after{height:420px}
+  .float-chip{display:none}
+  .workflow,
+  .skills-g,
+  .grid-2,
+  .grid-3,
+  .kpi-stack,
+  .contact-actions{
+    grid-template-columns:1fr;
+  }
+  .exp{grid-template-columns:1fr}
+  .scroll-card{width:245px}
+  .mini-photo{width:86px;height:86px}
+  .score-metrics{grid-template-columns:1fr 1fr}
+  .cursor-glow{display:none}
+  .bg-orb{filter:blur(34px);opacity:.24}
+  .soft-grid{background-size:42px 42px}
+}
 </style>
 </head>
+
 <body>
-<canvas id="bgc"></canvas><div class="noise"></div>
-<nav><div class="logo">Rania<span> Zafer</span></div><div class="nav-links"><a href="#about">About</a><a href="#recruiter">Recruiter View</a><a href="#case-study">Case Study</a><a href="#experience">Experience</a><a href="#contact" class="nav-hire">Hire Me →</a></div></nav>
-<section id="hero">
- <div class="hero-g">
-  <div class="reveal">
-   <div class="badge"><span class="dot"></span>Available for Marketing Analytics Roles</div>
-   <h1 class="hero-name">Rania<br><em>Zafer</em></h1>
-   <div class="hero-role"><span id="typeText"></span><span class="cursor"></span></div>
-   <p class="hero-desc">A marketing analytics profile built like a live portfolio: measurable growth, interactive KPI dashboards, AI-powered campaign thinking, and a Starbucks vs Coffee Day customer loyalty case study.</p>
-   <div class="ctas"><a href="#case-study" class="btn btn-red">View Case Study ↗</a><a href="mailto:raniazafer05@gmail.com" class="btn btn-out">Email Rania</a><a href="https://www.linkedin.com/in/rania-zafer-32b237347" target="_blank" class="btn btn-out">LinkedIn →</a></div>
-   <div class="hero-stats">
-    <div class="hstat"><div class="hstat-n"><span>+23</span>%</div><div class="hstat-l">Audience Growth</div></div><div class="hstat"><div class="hstat-n">37K</div><div class="hstat-l">Followers Reached</div></div><div class="hstat"><div class="hstat-n">8<span>+</span></div><div class="hstat-l">Certifications</div></div><div class="hstat"><div class="hstat-n">7<span>+</span></div><div class="hstat-l">AI Tools</div></div>
-   </div>
+<div class="page-progress" id="pageProgress"></div>
+
+<div class="premium-bg" aria-hidden="true">
+  <span class="bg-orb orb-red"></span>
+  <span class="bg-orb orb-teal"></span>
+  <span class="bg-orb orb-gold"></span>
+  <span class="bg-orb orb-purple"></span>
+  <div class="soft-grid"></div>
+</div>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<canvas id="bgc"></canvas>
+<div class="noise"></div>
+
+<nav>
+  <div class="logo">Rania<span> Zafer</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#recruiter">Recruiter View</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact" class="nav-hire">Hire Me →</a>
   </div>
-  <div class="profile-stage reveal"><span class="orb o1"></span><span class="orb o2"></span><div class="photo-card"><img src="rania-profile.jpg" alt="Rania Zafer professional profile photo" loading="eager" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');" alt="Rania Zafer profile photo"><div class="float-chip fc1"><b>+7K</b><small>followers in 3 months</small></div><div class="float-chip fc2"><b>☕ Case</b><small>Starbucks × CCD analysis</small></div></div></div>
- </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-g">
+    <div class="reveal">
+      <div class="badge"><span class="dot"></span>Available for Marketing Analytics Roles</div>
+      <h1 class="hero-name">Rania<br><em>Zafer</em></h1>
+      <div class="hero-role"><span id="typeText"></span><span class="cursor"></span></div>
+      <p class="hero-desc">
+        A marketing analytics profile built like a live portfolio: measurable growth, interactive KPI dashboards, AI-powered campaign thinking, and a Starbucks vs Coffee Day customer loyalty case study.
+      </p>
+      <div class="ctas">
+        <a href="#contact" class="btn btn-red">Hire Me ↓</a>
+        <a href="#case-study" class="btn btn-out">View Case Study ↗</a>
+        <a href="https://www.linkedin.com/in/rania-zafer-32b237347" target="_blank" class="btn btn-out">LinkedIn →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n"><span>+23</span>%</div><div class="hstat-l">Audience Growth</div></div>
+        <div class="hstat"><div class="hstat-n">37K</div><div class="hstat-l">Followers Reached</div></div>
+        <div class="hstat"><div class="hstat-n">8<span>+</span></div><div class="hstat-l">Certifications</div></div>
+        <div class="hstat"><div class="hstat-n">7<span>+</span></div><div class="hstat-l">AI Tools</div></div>
+      </div>
+    </div>
+
+    <div class="profile-stage reveal">
+      <span class="orb o1"></span>
+      <span class="orb o2"></span>
+      <div class="photo-card">
+        <img src="rania-profile.jpg?v=5" alt="Rania Zafer professional profile photo" loading="eager" onerror="this.style.display='none';this.parentElement.classList.add('photo-missing');">
+        <div class="float-chip fc1"><b>+7K</b><small>followers in 3 months</small></div>
+        <div class="float-chip fc2"><b>☕ Case</b><small>Starbucks × CCD analysis</small></div>
+      </div>
+    </div>
+  </div>
 </section>
+
 <section id="about" class="sec sec-alt">
- <div class="eyebrow">About Rania</div><div class="rule"></div><h2 class="sh">Creativity, marketing instinct<br>and data intelligence.</h2><p class="sub">A BBA Business Analytics & Marketing graduate from Villa Marie Degree College, Hyderabad, positioning herself for roles in marketing analytics, growth marketing, data analysis, and customer insights.</p>
- <div class="about-g">
-  <div class="bio-panel reveal"><div class="bio-line"><span>Degree</span><b>BBA — Business Analytics & Marketing</b></div><div class="bio-line"><span>College</span><b>Villa Marie Degree College</b></div><div class="bio-line"><span>Graduation</span><b>2026</b></div><div class="bio-line"><span>Location</span><b>Hyderabad, Telangana</b></div><div class="bio-line"><span>Strength</span><b>Data-backed marketing decisions</b></div><div class="bio-line"><span>Leadership</span><b>English Club President</b></div></div>
-  <div class="grid-3 reveal"><div class="card"><div class="icon">📊</div><h3>Marketing Analytics</h3><p>Reads campaign numbers, audience behavior, content output, and engagement patterns to suggest practical improvements.</p></div><div class="card"><div class="icon">📈</div><h3>Dashboard Thinking</h3><p>Turns KPIs into visual dashboards using Excel, Power BI, Tableau, GA4, and Looker Studio concepts.</p></div><div class="card"><div class="icon">🤖</div><h3>AI-Assisted Workflow</h3><p>Uses ChatGPT, Claude, Canva AI, Midjourney, Runway, Higgsfield and Veo to speed up ideation and campaign production.</p></div></div>
- </div>
+  <div class="eyebrow">About Rania</div>
+  <div class="rule"></div>
+  <h2 class="sh">Creativity, marketing instinct<br>and data intelligence.</h2>
+  <p class="sub">
+    A BBA Business Analytics & Marketing graduate from Villa Marie Degree College, Hyderabad, positioning herself for roles in marketing analytics, growth marketing, data analysis, and customer insights.
+  </p>
+
+  <div class="about-g">
+    <div class="bio-panel reveal live-card">
+      <div class="bio-line"><span>Degree</span><b>BBA — Business Analytics & Marketing</b></div>
+      <div class="bio-line"><span>College</span><b>Villa Marie Degree College</b></div>
+      <div class="bio-line"><span>Graduation</span><b>2026</b></div>
+      <div class="bio-line"><span>Location</span><b>Hyderabad, Telangana</b></div>
+      <div class="bio-line"><span>Strength</span><b>Data-backed marketing decisions</b></div>
+      <div class="bio-line"><span>Leadership</span><b>English Club President</b></div>
+    </div>
+
+    <div class="grid-3 reveal">
+      <div class="card"><div class="icon">📊</div><h3>Marketing Analytics</h3><p>Reads campaign numbers, audience behavior, content output, and engagement patterns to suggest practical improvements.</p></div>
+      <div class="card"><div class="icon">📈</div><h3>Dashboard Thinking</h3><p>Turns KPIs into visual dashboards using Excel, Power BI, Tableau, GA4, and Looker Studio concepts.</p></div>
+      <div class="card"><div class="icon">🤖</div><h3>AI-Assisted Workflow</h3><p>Uses ChatGPT, Claude, Canva AI, Midjourney, Runway, Higgsfield and Veo to speed up ideation and campaign production.</p></div>
+    </div>
+  </div>
 </section>
+
 <section id="kpis" class="sec">
- <div class="eyebrow">Interactive KPI Dashboard</div><div class="rule"></div><h2 class="sh">Rotating graphs that show her impact.</h2><p class="sub">This section automatically rotates between audience growth, campaign content mix, engagement contribution, and skill profile — so recruiters see movement, proof, and visual polish.</p>
- <div class="kpi-dash reveal">
-  <div class="kpi-stack"><div class="kpi-card"><span class="move">📈</span><b><em>+23.3</em>%</b><p>Instagram growth</p></div><div class="kpi-card"><span class="move">👥</span><b>30K → 37K</b><p>Audience scale</p></div><div class="kpi-card"><span class="move">🎯</span><b>5</b><p>Portfolio projects</p></div><div class="kpi-card"><span class="move">⚡</span><b>7+</b><p>AI tools workflow</p></div></div>
-  <div class="chart-card"><div class="chart-top"><div><h3 id="chartTitle">Instagram follower growth</h3><p id="chartDesc">Monthly growth trend from internship impact.</p></div><span class="pill" id="chartPill">Auto-rotating</span></div><div class="chart-wrap"><canvas id="rotatingChart"></canvas></div><div class="chart-tabs"><button class="tab active" data-chart="growth">Growth</button><button class="tab" data-chart="mix">Content Mix</button><button class="tab" data-chart="engagement">Engagement</button><button class="tab" data-chart="skills">Skills</button></div></div>
- </div>
+  <div class="eyebrow">Interactive KPI Dashboard</div>
+  <div class="rule"></div>
+  <h2 class="sh">Rotating graphs that show her impact.</h2>
+  <p class="sub">
+    This section automatically rotates between audience growth, campaign content mix, engagement contribution, and skill profile — so recruiters see movement, proof, and visual polish.
+  </p>
+
+  <div class="kpi-dash reveal">
+    <div class="kpi-stack">
+      <div class="kpi-card"><span class="move">📈</span><b><em>+23.3</em>%</b><p>Instagram growth</p></div>
+      <div class="kpi-card"><span class="move">👥</span><b>30K → 37K</b><p>Audience scale</p></div>
+      <div class="kpi-card"><span class="move">🎯</span><b>5</b><p>Portfolio projects</p></div>
+      <div class="kpi-card"><span class="move">⚡</span><b>7+</b><p>AI tools workflow</p></div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-top">
+        <div>
+          <h3 id="chartTitle">Instagram follower growth</h3>
+          <p id="chartDesc">Monthly growth trend from internship impact.</p>
+        </div>
+        <span class="pill" id="chartPill">Auto-rotating</span>
+      </div>
+      <div class="chart-wrap"><canvas id="rotatingChart"></canvas></div>
+      <div class="chart-tabs">
+        <button class="tab active" data-chart="growth">Growth</button>
+        <button class="tab" data-chart="mix">Content Mix</button>
+        <button class="tab" data-chart="engagement">Engagement</button>
+        <button class="tab" data-chart="skills">Skills</button>
+      </div>
+    </div>
+  </div>
 </section>
+
 <section id="workflow" class="sec sec-alt">
- <div class="eyebrow">Starbucks Workflow</div><div class="rule"></div><h2 class="sh">Real café workflow, translated into analytics.</h2><p class="sub">A recruiter-friendly workflow view that connects store operations with data points a marketing analyst can measure. This is the kind of thinking companies want: observe → measure → analyse → recommend.</p>
- <div class="workflow reveal"><div class="wf"><div class="wf-num">1</div><h3>Discovery & Queue Entry</h3><p>Customer enters store/app, notices seasonal boards, offers, aroma and ambience cues.</p></div><div class="wf"><div class="wf-num">2</div><h3>Order Capture</h3><p>Barista/app captures drink, size, milk, add-ons, food pairing, and payment preference.</p></div><div class="wf"><div class="wf-num">3</div><h3>Customization</h3><p>Personalized drink choices create premium perception and repeatable preference data.</p></div><div class="wf"><div class="wf-num">4</div><h3>Fulfilment</h3><p>Order is prepared, called out, and handed over; wait time affects satisfaction.</p></div><div class="wf"><div class="wf-num">5</div><h3>Loyalty Loop</h3><p>Stars/rewards/app offers nudge repeat visits and help segment loyal vs casual users.</p></div><div class="wf"><div class="wf-num">6</div><h3>Post-Visit Data</h3><p>Ratings, repeat visits, spend, time slot and product mix become business insight.</p></div></div>
+  <div class="eyebrow">Starbucks Workflow</div>
+  <div class="rule"></div>
+  <h2 class="sh">Real café workflow, translated into analytics.</h2>
+  <p class="sub">
+    A recruiter-friendly workflow view that connects store operations with data points a marketing analyst can measure. This is the kind of thinking companies want: observe → measure → analyse → recommend.
+  </p>
+
+  <div class="workflow reveal">
+    <div class="wf"><div class="wf-num">1</div><h3>Discovery & Queue Entry</h3><p>Customer enters store/app, notices seasonal boards, offers, aroma and ambience cues.</p></div>
+    <div class="wf"><div class="wf-num">2</div><h3>Order Capture</h3><p>Barista/app captures drink, size, milk, add-ons, food pairing, and payment preference.</p></div>
+    <div class="wf"><div class="wf-num">3</div><h3>Customization</h3><p>Personalized drink choices create premium perception and repeatable preference data.</p></div>
+    <div class="wf"><div class="wf-num">4</div><h3>Fulfilment</h3><p>Order is prepared, called out, and handed over; wait time affects satisfaction.</p></div>
+    <div class="wf"><div class="wf-num">5</div><h3>Loyalty Loop</h3><p>Stars/rewards/app offers nudge repeat visits and help segment loyal vs casual users.</p></div>
+    <div class="wf"><div class="wf-num">6</div><h3>Post-Visit Data</h3><p>Ratings, repeat visits, spend, time slot and product mix become business insight.</p></div>
+  </div>
 </section>
 
 <section id="recruiter" class="sec sec-alt">
- <div class="eyebrow">Recruiter Snapshot</div><div class="rule"></div><h2 class="sh">Built like a data analyst portfolio, not a plain resume.</h2><p class="sub">For companies like Deloitte, Cognizant, Infosys and growth teams, the profile should quickly prove three things: business thinking, data storytelling, and measurable execution.</p>
- <div class="recruiter-grid reveal">
-  <div class="ats-list">
-   <div class="ats-item live-card"><span>📊</span><div><b>Analytics proof</b><small>Shows dashboards, KPI thinking, customer journey metrics, segmentation and comparison analysis.</small></div></div>
-   <div class="ats-item live-card"><span>☕</span><div><b>Business case study</b><small>Starbucks vs Coffee Day section presents brand workflow, choice drivers, loyalty funnel and insights.</small></div></div>
-   <div class="ats-item live-card"><span>📈</span><div><b>Measurable impact</b><small>Highlights +23% audience growth, 37K follower scale, content mix and engagement contribution.</small></div></div>
-   <div class="ats-item live-card"><span>🤖</span><div><b>Modern AI workflow</b><small>Positions her as a fresher/intern who knows AI-assisted research, campaign planning and visualization.</small></div></div>
+  <div class="eyebrow">Recruiter Snapshot</div>
+  <div class="rule"></div>
+  <h2 class="sh">Built like a data analyst portfolio, not a plain resume.</h2>
+  <p class="sub">
+    For companies like Deloitte, Cognizant, Infosys and growth teams, the profile should quickly prove three things: business thinking, data storytelling, and measurable execution.
+  </p>
+
+  <div class="recruiter-grid reveal">
+    <div class="ats-list">
+      <div class="ats-item live-card"><span>📊</span><div><b>Analytics proof</b><small>Shows dashboards, KPI thinking, customer journey metrics, segmentation and comparison analysis.</small></div></div>
+      <div class="ats-item live-card"><span>☕</span><div><b>Business case study</b><small>Starbucks vs Coffee Day section presents brand workflow, choice drivers, loyalty funnel and insights.</small></div></div>
+      <div class="ats-item live-card"><span>📈</span><div><b>Measurable impact</b><small>Highlights +23% audience growth, 37K follower scale, content mix and engagement contribution.</small></div></div>
+      <div class="ats-item live-card"><span>🤖</span><div><b>Modern AI workflow</b><small>Positions her as a fresher/intern who knows AI-assisted research, campaign planning and visualization.</small></div></div>
+    </div>
+
+    <div class="score-card live-card">
+      <h3>Recruiter-ready positioning</h3>
+      <p>Instead of only saying “I know Excel and marketing,” this page demonstrates how Rania thinks: collect data, clean it, visualize it, interpret it, and recommend action.</p>
+      <div class="score-metrics">
+        <div class="score-metric"><b>ATS</b><small>Keyword friendly</small></div>
+        <div class="score-metric"><b>Case</b><small>Business oriented</small></div>
+        <div class="score-metric"><b>KPI</b><small>Result focused</small></div>
+        <div class="score-metric"><b>AI</b><small>Future ready</small></div>
+      </div>
+    </div>
   </div>
-  <div class="score-card live-card">
-    <h3>Recruiter-ready positioning</h3>
-    <p>Instead of only saying “I know Excel and marketing,” this page demonstrates how Rania thinks: collect data, clean it, visualize it, interpret it, and recommend action.</p>
-    <div class="score-metrics"><div class="score-metric"><b>ATS</b><small>Keyword friendly</small></div><div class="score-metric"><b>Case</b><small>Business oriented</small></div><div class="score-metric"><b>KPI</b><small>Result focused</small></div><div class="score-metric"><b>AI</b><small>Future ready</small></div></div>
+
+  <div class="recruiter-strip reveal" aria-label="Scrolling recruiter highlights">
+    <div class="scroll-row">
+      <div class="scroll-card"><div class="sicon">📌</div><h3>Best-fit roles</h3><p>Marketing Analyst · Data Analyst Intern · Growth Marketing · Customer Insights.</p></div>
+      <div class="scroll-card"><div class="sicon">🧮</div><h3>Core tools</h3><p>Excel, Sheets, SQL basics, Power BI, Tableau, GA4 and Looker Studio.</p></div>
+      <div class="scroll-card"><div class="sicon">📊</div><h3>KPI mindset</h3><p>Tracks reach, engagement, conversion, loyalty, repeat visit and churn signals.</p></div>
+      <div class="scroll-card"><div class="sicon">🎯</div><h3>Marketing + data</h3><p>Can connect creative campaigns with numbers, insights and next actions.</p></div>
+      <div class="scroll-card"><div class="sicon">🗣️</div><h3>Communication</h3><p>Club leadership, theatre, event handling and research storytelling.</p></div>
+      <div class="scroll-card"><div class="sicon">✨</div><h3>Intern advantage</h3><p>Fresh, trainable, AI-aware and comfortable building visual dashboards.</p></div>
+
+      <div class="scroll-card"><div class="sicon">📌</div><h3>Best-fit roles</h3><p>Marketing Analyst · Data Analyst Intern · Growth Marketing · Customer Insights.</p></div>
+      <div class="scroll-card"><div class="sicon">🧮</div><h3>Core tools</h3><p>Excel, Sheets, SQL basics, Power BI, Tableau, GA4 and Looker Studio.</p></div>
+      <div class="scroll-card"><div class="sicon">📊</div><h3>KPI mindset</h3><p>Tracks reach, engagement, conversion, loyalty, repeat visit and churn signals.</p></div>
+      <div class="scroll-card"><div class="sicon">🎯</div><h3>Marketing + data</h3><p>Can connect creative campaigns with numbers, insights and next actions.</p></div>
+      <div class="scroll-card"><div class="sicon">🗣️</div><h3>Communication</h3><p>Club leadership, theatre, event handling and research storytelling.</p></div>
+      <div class="scroll-card"><div class="sicon">✨</div><h3>Intern advantage</h3><p>Fresh, trainable, AI-aware and comfortable building visual dashboards.</p></div>
+    </div>
   </div>
- </div>
- <div class="recruiter-strip reveal" aria-label="Scrolling recruiter highlights">
-  <div class="scroll-row">
-   <div class="scroll-card"><div class="sicon">📌</div><h3>Best-fit roles</h3><p>Marketing Analyst · Data Analyst Intern · Growth Marketing · Customer Insights.</p></div>
-   <div class="scroll-card"><div class="sicon">🧮</div><h3>Core tools</h3><p>Excel, Sheets, SQL basics, Power BI, Tableau, GA4 and Looker Studio.</p></div>
-   <div class="scroll-card"><div class="sicon">📊</div><h3>KPI mindset</h3><p>Tracks reach, engagement, conversion, loyalty, repeat visit and churn signals.</p></div>
-   <div class="scroll-card"><div class="sicon">🎯</div><h3>Marketing + data</h3><p>Can connect creative campaigns with numbers, insights and next actions.</p></div>
-   <div class="scroll-card"><div class="sicon">🗣️</div><h3>Communication</h3><p>Club leadership, theatre, event handling and research storytelling.</p></div>
-   <div class="scroll-card"><div class="sicon">✨</div><h3>Intern advantage</h3><p>Fresh, trainable, AI-aware and comfortable building visual dashboards.</p></div>
-   <div class="scroll-card"><div class="sicon">📌</div><h3>Best-fit roles</h3><p>Marketing Analyst · Data Analyst Intern · Growth Marketing · Customer Insights.</p></div>
-   <div class="scroll-card"><div class="sicon">🧮</div><h3>Core tools</h3><p>Excel, Sheets, SQL basics, Power BI, Tableau, GA4 and Looker Studio.</p></div>
-   <div class="scroll-card"><div class="sicon">📊</div><h3>KPI mindset</h3><p>Tracks reach, engagement, conversion, loyalty, repeat visit and churn signals.</p></div>
-   <div class="scroll-card"><div class="sicon">🎯</div><h3>Marketing + data</h3><p>Can connect creative campaigns with numbers, insights and next actions.</p></div>
-   <div class="scroll-card"><div class="sicon">🗣️</div><h3>Communication</h3><p>Club leadership, theatre, event handling and research storytelling.</p></div>
-   <div class="scroll-card"><div class="sicon">✨</div><h3>Intern advantage</h3><p>Fresh, trainable, AI-aware and comfortable building visual dashboards.</p></div>
-  </div>
- </div>
 </section>
 
 <section id="case-study" class="sec sec-dark">
- <div class="eyebrow">Featured Case Study</div><h2 class="sh">Starbucks vs Coffee Day: customer loyalty analysis.</h2><p class="sub">A polished case-study section for Rania’s profile. The analysis is framed from customer behavior, café choice drivers, loyalty triggers, and marketing opportunities. Numerical values below are marked as a portfolio model so she can replace them with survey data when final research responses are ready.</p>
- <div class="case-head reveal"><div class="brand-card star"><h3>Starbucks</h3><p>Premium café positioning built on ambience, personalization, global brand recall, app-led loyalty, seasonal beverages, and lifestyle-led social sharing.</p><div class="brand-mini">★</div></div><div class="brand-card ccd"><h3>Café Coffee Day</h3><p>Accessible Indian café network with familiar menu, value comfort, casual meetings, and high nostalgia among students and working professionals.</p><div class="brand-mini">☕</div></div></div>
- <div class="case-grid reveal"><div class="dark-card"><h3 id="caseTitle">Choice drivers: Starbucks vs Coffee Day</h3><p id="caseDesc">Relative importance across customer decision factors. Replace portfolio-model values with survey results later.</p><div class="dark-chart"><canvas id="caseChart"></canvas></div><div class="chart-tabs"><button class="tab active" data-case="drivers">Choice Drivers</button><button class="tab" data-case="loyalty">Loyalty Funnel</button><button class="tab" data-case="segments">Customer Segments</button><button class="tab" data-case="moments">Experience Moments</button></div></div>
- <div class="insight-list"><div class="insight"><b>Insight 1 — Starbucks wins lifestyle recall</b><span>Customers often associate Starbucks with premium ambience, customization, Instagrammable experience and work/study comfort.</span></div><div class="insight"><b>Insight 2 — CCD can win value-led repeat visits</b><span>Coffee Day remains competitive when customers want affordability, familiarity, quick meetings and low-pressure café time.</span></div><div class="insight"><b>Insight 3 — Loyalty is not only price</b><span>Repeat visits are influenced by app rewards, consistency, staff experience, seating comfort, product innovation and perceived status.</span></div><div class="insight"><b>Rania’s analyst angle</b><span>Convert café visits into measurable KPIs: NPS, visit frequency, average ticket size, redemption rate, repeat purchase, and churn risk.</span></div></div></div>
+  <div class="eyebrow">Featured Case Study</div>
+  <h2 class="sh">Starbucks vs Coffee Day: customer loyalty analysis.</h2>
+  <p class="sub">
+    A polished case-study section for Rania’s profile. The analysis is framed from customer behavior, café choice drivers, loyalty triggers, and marketing opportunities. Numerical values below are portfolio-model values and can be replaced with actual survey data later.
+  </p>
+
+  <div class="case-head reveal">
+    <div class="brand-card star">
+      <h3>Starbucks</h3>
+      <p>Premium café positioning built on ambience, personalization, global brand recall, app-led loyalty, seasonal beverages, and lifestyle-led social sharing.</p>
+      <div class="brand-mini">★</div>
+    </div>
+    <div class="brand-card ccd">
+      <h3>Café Coffee Day</h3>
+      <p>Accessible Indian café network with familiar menu, value comfort, casual meetings, and high nostalgia among students and working professionals.</p>
+      <div class="brand-mini">☕</div>
+    </div>
+  </div>
+
+  <div class="case-grid reveal">
+    <div class="dark-card">
+      <h3 id="caseTitle">Choice drivers: Starbucks vs Coffee Day</h3>
+      <p id="caseDesc">Relative score by decision factor. Portfolio-model values.</p>
+      <div class="dark-chart"><canvas id="caseChart"></canvas></div>
+      <div class="chart-tabs">
+        <button class="tab active" data-case="drivers">Choice Drivers</button>
+        <button class="tab" data-case="loyalty">Loyalty Funnel</button>
+        <button class="tab" data-case="segments">Customer Segments</button>
+        <button class="tab" data-case="moments">Experience Moments</button>
+      </div>
+    </div>
+
+    <div class="insight-list">
+      <div class="insight"><b>Insight 1 — Starbucks wins lifestyle recall</b><span>Customers often associate Starbucks with premium ambience, customization, Instagrammable experience and work/study comfort.</span></div>
+      <div class="insight"><b>Insight 2 — CCD can win value-led repeat visits</b><span>Coffee Day remains competitive when customers want affordability, familiarity, quick meetings and low-pressure café time.</span></div>
+      <div class="insight"><b>Insight 3 — Loyalty is not only price</b><span>Repeat visits are influenced by app rewards, consistency, staff experience, seating comfort, product innovation and perceived status.</span></div>
+      <div class="insight"><b>Rania’s analyst angle</b><span>Convert café visits into measurable KPIs: NPS, visit frequency, average ticket size, redemption rate, repeat purchase, and churn risk.</span></div>
+    </div>
+  </div>
 </section>
+
 <section id="experience" class="sec">
- <div class="eyebrow">Experience & Proof</div><div class="rule"></div><h2 class="sh">Where she already made numbers move.</h2><p class="sub">This experience section keeps the original KPI but presents it with stronger recruiter-focused storytelling.</p>
- <div class="timeline reveal"><div class="exp"><div><div class="exp-date">July 2025 – September 2025</div></div><div><h3>Social Media Marketing Intern</h3><h4>Misha The Bridal Store · Hyderabad</h4><ul><li>Grew Instagram from <strong>30,000 to 37,000 followers</strong> in three months, showing <strong>+23.3% audience growth</strong>.</li><li>Planned bridal content around peak engagement windows, seasonal demand, and audience interests.</li><li>Tracked content performance and optimized posts, stories, reels, and interaction formats.</li><li>Used Canva AI and AI content tools for faster visual ideation and campaign execution.</li></ul></div></div><div class="exp"><div><div class="exp-date">Leadership</div></div><div><h3>English Club President</h3><h4>Villa Marie Degree College</h4><ul><li>Led major theatre productions including Macbeth and Pygmalion.</li><li>Organized the college Event of the Year, building planning, coordination and presentation confidence.</li><li>Strengthened communication, stakeholder handling and team leadership skills.</li></ul></div></div></div>
+  <div class="eyebrow">Experience & Proof</div>
+  <div class="rule"></div>
+  <h2 class="sh">Where she already made numbers move.</h2>
+  <p class="sub">
+    This experience section keeps the original KPI but presents it with stronger recruiter-focused storytelling.
+  </p>
+
+  <div class="timeline reveal">
+    <div class="exp live-card">
+      <div><div class="exp-date">July 2025 – September 2025</div></div>
+      <div>
+        <h3>Social Media Marketing Intern</h3>
+        <h4>Misha The Bridal Store · Hyderabad</h4>
+        <ul>
+          <li>Grew Instagram from <strong>30,000 to 37,000 followers</strong> in three months, showing <strong>+23.3% audience growth</strong>.</li>
+          <li>Planned bridal content around peak engagement windows, seasonal demand, and audience interests.</li>
+          <li>Tracked content performance and optimized posts, stories, reels, and interaction formats.</li>
+          <li>Used Canva AI and AI content tools for faster visual ideation and campaign execution.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp live-card">
+      <div><div class="exp-date">Leadership</div></div>
+      <div>
+        <h3>English Club President</h3>
+        <h4>Villa Marie Degree College</h4>
+        <ul>
+          <li>Led major theatre productions including Macbeth and Pygmalion.</li>
+          <li>Organized the college Event of the Year, building planning, coordination and presentation confidence.</li>
+          <li>Strengthened communication, stakeholder handling and team leadership skills.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
+
 <section id="skills" class="sec sec-alt">
- <div class="eyebrow">Skills</div><div class="rule"></div><h2 class="sh">Recruiter-ready skill stack.</h2><p class="sub">Animated progress bars help quickly communicate her strengths without making the profile text-heavy.</p>
- <div class="skills-g reveal"><div class="skill"><h3>Analytics Tools</h3><div class="bar"><div class="fill" data-w="84%"></div></div><small>Excel, Google Sheets, SQL basics, Power BI, Tableau, GA4, Looker Studio.</small></div><div class="skill"><h3>Marketing</h3><div class="bar"><div class="fill" data-w="88%"></div></div><small>Content strategy, Meta Ads basics, SEO basics, social media analytics, campaign planning.</small></div><div class="skill"><h3>AI Workflow</h3><div class="bar"><div class="fill" data-w="86%"></div></div><small>ChatGPT, Claude, Canva AI, Midjourney, Runway ML, Higgsfield AI, Veo.</small></div><div class="skill"><h3>Communication</h3><div class="bar"><div class="fill" data-w="92%"></div></div><small>Presentation, theatre leadership, event planning, research storytelling and stakeholder communication.</small></div></div>
+  <div class="eyebrow">Skills</div>
+  <div class="rule"></div>
+  <h2 class="sh">Recruiter-ready skill stack.</h2>
+  <p class="sub">
+    Animated progress bars help quickly communicate her strengths without making the profile text-heavy.
+  </p>
+
+  <div class="skills-g reveal">
+    <div class="skill"><h3>Analytics Tools</h3><div class="bar"><div class="fill" data-w="84%"></div></div><small>Excel, Google Sheets, SQL basics, Power BI, Tableau, GA4, Looker Studio.</small></div>
+    <div class="skill"><h3>Marketing</h3><div class="bar"><div class="fill" data-w="88%"></div></div><small>Content strategy, Meta Ads basics, SEO basics, social media analytics, campaign planning.</small></div>
+    <div class="skill"><h3>AI Workflow</h3><div class="bar"><div class="fill" data-w="86%"></div></div><small>ChatGPT, Claude, Canva AI, Midjourney, Runway ML, Higgsfield AI, Veo.</small></div>
+    <div class="skill"><h3>Communication</h3><div class="bar"><div class="fill" data-w="92%"></div></div><small>Presentation, theatre leadership, event planning, research storytelling and stakeholder communication.</small></div>
+  </div>
 </section>
 
 <section id="contact" class="sec">
- <div class="eyebrow">Hire Me</div><div class="rule"></div><h2 class="sh">Contact Rania in one click.</h2><p class="sub">This section is designed like a recruiter contact card. The top “Hire Me” button directly brings hiring managers here.</p>
- <div class="contact-shell reveal">
-  <div class="contact-profile live-card">
-   <img class="mini-photo" src="rania-profile.jpg" alt="Rania Zafer photo" onerror="this.style.display='none'">
-   <span class="status-dot">Available for roles</span>
-   <h3>Rania Zafer</h3>
-   <p>Marketing Analytics & Data Analyst · Hyderabad. Open to internships and full-time fresher roles in analytics, customer insights, digital marketing analytics and growth teams.</p>
-   <div class="score-metrics"><div class="score-metric" style="background:#fff;color:var(--navy)"><b style="color:var(--red)">+23%</b><small style="color:var(--muted)">Audience growth</small></div><div class="score-metric" style="background:#fff;color:var(--navy)"><b style="color:var(--red)">37K</b><small style="color:var(--muted)">Followers reached</small></div></div>
-  </div>
-  <div class="contact-actions">
-   <a class="action-card" href="mailto:raniazafer05@gmail.com?subject=Opportunity%20for%20Rania%20Zafer"><div class="a-ic">✉️</div><div><div class="a-label">Mail me</div><div class="a-val">raniazafer05@gmail.com</div></div></a>
-   <a class="action-card call" href="tel:+918686350002"><div class="a-ic">📞</div><div><div class="a-label">Call me</div><div class="a-val">+91 8686 350 002</div></div></a>
-   <a class="action-card whatsapp" href="https://wa.me/918686350002?text=Hi%20Rania%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20about%20an%20opportunity." target="_blank"><div class="a-ic">💬</div><div><div class="a-label">WhatsApp me</div><div class="a-val">Quick recruiter message</div></div></a>
-   <a class="action-card linkedin" href="https://www.linkedin.com/in/rania-zafer-32b237347" target="_blank"><div class="a-ic">💼</div><div><div class="a-label">LinkedIn</div><div class="a-val">rania-zafer-32b237347</div></div></a>
-   <a class="action-card resume" href="#experience"><div class="a-ic">📄</div><div><div class="a-label">View proof</div><div class="a-val">Experience & skills</div></div></a>
-   <a class="action-card" href="#case-study"><div class="a-ic">☕</div><div><div class="a-label">Case study</div><div class="a-val">Starbucks × Coffee Day</div></div></a>
-  </div>
- </div>
-</section>
-<footer><p>Crafted for <strong>Rania Zafer</strong> · Marketing Analytics & Data Analyst · Hyderabad · © 2026</p></footer>
-<script>
-/* Background particles */
-const cvs=document.getElementById('bgc'),ctx=cvs.getContext('2d');let W,H,pts=[];function resize(){W=cvs.width=innerWidth;H=cvs.height=innerHeight}resize();addEventListener('resize',resize);class P{constructor(){this.reset()}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*2+.4;this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;this.c=Math.random()<.35?'#E8294A':Math.random()<.65?'#0A7EA4':'#C9933A'}step(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset()}draw(){ctx.globalAlpha=.25;ctx.fillStyle=this.c;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}}for(let i=0;i<80;i++)pts.push(new P());(function loop(){ctx.clearRect(0,0,W,H);pts.forEach((p,i)=>{for(let j=i+1;j<pts.length;j++){let q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);if(d<120){ctx.globalAlpha=(1-d/120)*.06;ctx.strokeStyle='#0D1B2A';ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke()}}p.step();p.draw()});requestAnimationFrame(loop)})();
-/* Typing */
-const phrases=['Marketing Analytics & Data Analyst','Customer Insights Researcher','AI-Assisted Growth Marketer','Dashboard Storyteller'];let pi=0,ci=0,del=false;function type(){const t=phrases[pi];document.getElementById('typeText').textContent=t.slice(0,ci);if(!del&&ci<t.length)ci++;else if(del&&ci>0)ci--;else{del=!del;if(!del)pi=(pi+1)%phrases.length}setTimeout(type,del?38:78)}type();
-/* Reveal */
-const io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*80);io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
-const bario=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w);bario.disconnect()}}),{threshold:.3});bario.observe(document.getElementById('skills'));
-Chart.defaults.font.family='Inter';Chart.defaults.color='#6B7C93';
-let rotatingChart;const chartSpecs={
- growth:{title:'Instagram follower growth',desc:'Monthly growth trend from internship impact.',type:'line',data:{labels:['Start','Month 1','Month 2','Month 3'],datasets:[{label:'Followers',data:[30000,31800,34400,37000],borderColor:'#E8294A',backgroundColor:'rgba(232,41,74,.10)',fill:true,tension:.42,pointRadius:5,pointBackgroundColor:'#E8294A'}]},options:{plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>Math.round(v/1000)+'K'}},x:{grid:{display:false}}}}},
- mix:{title:'Monthly content output mix',desc:'Portfolio model of posts, stories and reels by month.',type:'bar',data:{labels:['July','August','September'],datasets:[{label:'Posts',data:[12,18,22],backgroundColor:'rgba(232,41,74,.82)',borderRadius:8},{label:'Stories',data:[28,35,40],backgroundColor:'rgba(10,126,164,.82)',borderRadius:8},{label:'Reels',data:[6,10,14],backgroundColor:'rgba(91,79,202,.82)',borderRadius:8}]},options:{plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false}}}}},
- engagement:{title:'Engagement contribution by content type',desc:'Model showing which formats usually drive highest interaction.',type:'doughnut',data:{labels:['Reels','Carousels','Stories','Static Posts'],datasets:[{data:[42,28,20,10],backgroundColor:['#E8294A','#0A7EA4','#5B4FCA','#C9933A'],borderWidth:0}]},options:{cutout:'62%',plugins:{legend:{position:'bottom'}}}},
- skills:{title:'Skill proficiency overview',desc:'Balanced analytics, marketing, AI and communication profile.',type:'radar',data:{labels:['Analytics','Marketing','AI Tools','Data Viz','Research','Communication'],datasets:[{data:[84,88,86,82,78,92],borderColor:'#E8294A',backgroundColor:'rgba(232,41,74,.11)',pointBackgroundColor:'#E8294A'}]},options:{plugins:{legend:{display:false}},scales:{r:{min:0,max:100,ticks:{display:false}}}}}
-};
-function renderMain(key){if(rotatingChart)rotatingChart.destroy();const s=chartSpecs[key];document.getElementById('chartTitle').textContent=s.title;document.getElementById('chartDesc').textContent=s.desc;rotatingChart=new Chart(document.getElementById('rotatingChart'),{type:s.type,data:s.data,options:{responsive:true,maintainAspectRatio:false,...s.options}});document.querySelectorAll('[data-chart]').forEach(b=>b.classList.toggle('active',b.dataset.chart===key))}renderMain('growth');let keys=['growth','mix','engagement','skills'],idx=0;setInterval(()=>{idx=(idx+1)%keys.length;renderMain(keys[idx])},4200);document.querySelectorAll('[data-chart]').forEach(b=>b.onclick=()=>{idx=keys.indexOf(b.dataset.chart);renderMain(b.dataset.chart)});
-/* Case study rotating chart */
-let caseChart;const caseSpecs={
- drivers:{title:'Choice drivers: Starbucks vs Coffee Day',desc:'Relative score by decision factor. Portfolio-model values.',type:'bar',data:{labels:['Ambience','Price Value','Customization','Convenience','Loyalty/App','Social Image'],datasets:[{label:'Starbucks',data:[92,58,88,76,84,90],backgroundColor:'rgba(0,98,65,.82)',borderRadius:8},{label:'Coffee Day',data:[72,84,58,80,52,62],backgroundColor:'rgba(201,147,58,.85)',borderRadius:8}]},options:{plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,.75)'}}},scales:{x:{ticks:{color:'rgba(255,255,255,.7)'},grid:{display:false}},y:{ticks:{color:'rgba(255,255,255,.7)'},grid:{color:'rgba(255,255,255,.08)'}}}}},
- loyalty:{title:'Loyalty funnel comparison',desc:'From trial to repeat to advocacy. Portfolio-model values.',type:'line',data:{labels:['Aware','First Visit','Repeat Visit','Reward Use','Advocate'],datasets:[{label:'Starbucks',data:[92,78,62,48,36],borderColor:'#16A36B',backgroundColor:'rgba(22,163,107,.13)',fill:true,tension:.38},{label:'Coffee Day',data:[86,72,52,26,20],borderColor:'#C9933A',backgroundColor:'rgba(201,147,58,.12)',fill:true,tension:.38}]},options:{plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,.75)'}}},scales:{x:{ticks:{color:'rgba(255,255,255,.7)'},grid:{display:false}},y:{ticks:{color:'rgba(255,255,255,.7)'},grid:{color:'rgba(255,255,255,.08)'}}}}},
- segments:{title:'Urban youth café segments',desc:'Model segmentation for survey/research presentation.',type:'doughnut',data:{labels:['Loyal Starbucks','CCD Value Seekers','Café Hoppers','Occasional Visitors'],datasets:[{data:[30,24,32,14],backgroundColor:['#16A36B','#C9933A','#E8294A','#5B4FCA'],borderWidth:0}]},options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,.75)'}}}}},
- moments:{title:'Experience moments that influence loyalty',desc:'Which moments most affect repeat visits. Portfolio-model values.',type:'bar',data:{labels:['Entry Ambience','Ordering','Wait Time','Taste Consistency','Seating Comfort','Rewards'],datasets:[{label:'Impact score',data:[82,70,64,88,78,76],backgroundColor:'rgba(232,41,74,.82)',borderRadius:8}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{color:'rgba(255,255,255,.7)'},grid:{color:'rgba(255,255,255,.08)'}},y:{ticks:{color:'rgba(255,255,255,.7)'},grid:{display:false}}}}}
-};
-function renderCase(key){if(caseChart)caseChart.destroy();const s=caseSpecs[key];document.getElementById('caseTitle').textContent=s.title;document.getElementById('caseDesc').textContent=s.desc;caseChart=new Chart(document.getElementById('caseChart'),{type:s.type,data:s.data,options:{responsive:true,maintainAspectRatio:false,...s.options}});document.querySelectorAll('[data-case]').forEach(b=>b.classList.toggle('active',b.dataset.case===key))}renderCase('drivers');let ck=['drivers','loyalty','segments','moments'],ci2=0;setInterval(()=>{ci2=(ci2+1)%ck.length;renderCase(ck[ci2])},5200);document.querySelectorAll('[data-case]').forEach(b=>b.onclick=()=>{ci2=ck.indexOf(b.dataset.case);renderCase(b.dataset.case)});
+  <div class="eyebrow">Hire Me</div>
+  <div class="rule"></div>
+  <h2 class="sh">Contact Rania in one click.</h2>
+  <p class="sub">
+    This section is designed like a recruiter contact card. The top “Hire Me” button directly brings hiring managers here.
+  </p>
 
-/* Soft 3D live-card tilt movement */
-document.querySelectorAll('.live-card,.card,.kpi-card,.wf,.skill,.contact-card').forEach(card=>{
+  <div class="contact-shell reveal">
+    <div class="contact-profile live-card">
+      <img class="mini-photo" src="rania-profile.jpg?v=5" alt="Rania Zafer photo" onerror="this.style.display='none'">
+      <span class="status-dot">Available for roles</span>
+      <h3>Rania Zafer</h3>
+      <p>Marketing Analytics & Data Analyst · Hyderabad. Open to internships and full-time fresher roles in analytics, customer insights, digital marketing analytics and growth teams.</p>
+
+      <div class="score-metrics">
+        <div class="score-metric" style="background:#fff;color:var(--navy)">
+          <b style="color:var(--red)">+23%</b>
+          <small style="color:var(--muted)">Audience growth</small>
+        </div>
+        <div class="score-metric" style="background:#fff;color:var(--navy)">
+          <b style="color:var(--red)">37K</b>
+          <small style="color:var(--muted)">Followers reached</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-actions">
+      <a class="action-card" href="mailto:raniazafer05@gmail.com?subject=Opportunity%20for%20Rania%20Zafer">
+        <div class="a-ic">✉️</div>
+        <div><div class="a-label">Mail me</div><div class="a-val">raniazafer05@gmail.com</div></div>
+      </a>
+
+      <a class="action-card call" href="tel:+918686350002">
+        <div class="a-ic">📞</div>
+        <div><div class="a-label">Call me</div><div class="a-val">+91 8686 350 002</div></div>
+      </a>
+
+      <a class="action-card whatsapp" href="https://wa.me/918686350002?text=Hi%20Rania%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20about%20an%20opportunity." target="_blank">
+        <div class="a-ic">💬</div>
+        <div><div class="a-label">WhatsApp me</div><div class="a-val">Quick recruiter message</div></div>
+      </a>
+
+      <a class="action-card linkedin" href="https://www.linkedin.com/in/rania-zafer-32b237347" target="_blank">
+        <div class="a-ic">💼</div>
+        <div><div class="a-label">LinkedIn</div><div class="a-val">rania-zafer-32b237347</div></div>
+      </a>
+
+      <a class="action-card resume" href="#experience">
+        <div class="a-ic">📄</div>
+        <div><div class="a-label">View proof</div><div class="a-val">Experience & skills</div></div>
+      </a>
+
+      <a class="action-card" href="#case-study">
+        <div class="a-ic">☕</div>
+        <div><div class="a-label">Case study</div><div class="a-val">Starbucks × Coffee Day</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Crafted for <strong>Rania Zafer</strong> · Marketing Analytics & Data Analyst · Hyderabad · © 2026</p>
+</footer>
+
+<script>
+/* Premium scroll progress + cursor glow */
+const pageProgress = document.getElementById('pageProgress');
+const cursorGlow = document.getElementById('cursorGlow');
+
+function updateProgress(){
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  if(pageProgress){
+    pageProgress.style.width = progress + '%';
+  }
+}
+
+window.addEventListener('scroll', updateProgress);
+updateProgress();
+
+window.addEventListener('mousemove', function(e){
+  if(cursorGlow){
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+  }
+});
+
+/* Background particles */
+const cvs=document.getElementById('bgc');
+const ctx=cvs.getContext('2d');
+let W,H,pts=[];
+
+function resize(){
+  W=cvs.width=innerWidth;
+  H=cvs.height=innerHeight;
+}
+
+resize();
+addEventListener('resize',resize);
+
+class P{
+  constructor(){this.reset()}
+  reset(){
+    this.x=Math.random()*W;
+    this.y=Math.random()*H;
+    this.r=Math.random()*2+.4;
+    this.vx=(Math.random()-.5)*.35;
+    this.vy=(Math.random()-.5)*.35;
+    this.c=Math.random()<.35?'#E8294A':Math.random()<.65?'#0A7EA4':'#C9933A';
+  }
+  step(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();
+  }
+  draw(){
+    ctx.globalAlpha=.25;
+    ctx.fillStyle=this.c;
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+
+for(let i=0;i<80;i++)pts.push(new P());
+
+(function loop(){
+  ctx.clearRect(0,0,W,H);
+  pts.forEach((p,i)=>{
+    for(let j=i+1;j<pts.length;j++){
+      let q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
+      if(d<120){
+        ctx.globalAlpha=(1-d/120)*.06;
+        ctx.strokeStyle='#0D1B2A';
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(q.x,q.y);
+        ctx.stroke();
+      }
+    }
+    p.step();
+    p.draw();
+  });
+  requestAnimationFrame(loop);
+})();
+
+/* Typing */
+const phrases=[
+  'Marketing Analytics & Data Analyst',
+  'Customer Insights Researcher',
+  'AI-Assisted Growth Marketer',
+  'Dashboard Storyteller'
+];
+
+let pi=0,ti=0,del=false;
+
+function type(){
+  const t=phrases[pi];
+  const el=document.getElementById('typeText');
+  if(el) el.textContent=t.slice(0,ti);
+
+  if(!del && ti<t.length) ti++;
+  else if(del && ti>0) ti--;
+  else{
+    del=!del;
+    if(!del) pi=(pi+1)%phrases.length;
+  }
+
+  setTimeout(type,del?38:78);
+}
+
+type();
+
+/* Reveal */
+const io=new IntersectionObserver(es=>{
+  es.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('vis'),i*80);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+
+/* Skill bars */
+const skillsSection=document.getElementById('skills');
+if(skillsSection){
+  const bario=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        document.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w);
+        bario.disconnect();
+      }
+    });
+  },{threshold:.3});
+  bario.observe(skillsSection);
+}
+
+/* Charts */
+Chart.defaults.font.family='Inter';
+Chart.defaults.color='#6B7C93';
+
+let rotatingChart;
+
+const chartSpecs={
+  growth:{
+    title:'Instagram follower growth',
+    desc:'Monthly growth trend from internship impact.',
+    type:'line',
+    data:{
+      labels:['Start','Month 1','Month 2','Month 3'],
+      datasets:[{
+        label:'Followers',
+        data:[30000,31800,34400,37000],
+        borderColor:'#E8294A',
+        backgroundColor:'rgba(232,41,74,.10)',
+        fill:true,
+        tension:.42,
+        pointRadius:5,
+        pointBackgroundColor:'#E8294A'
+      }]
+    },
+    options:{
+      plugins:{legend:{display:false}},
+      scales:{
+        y:{ticks:{callback:v=>Math.round(v/1000)+'K'}},
+        x:{grid:{display:false}}
+      }
+    }
+  },
+  mix:{
+    title:'Monthly content output mix',
+    desc:'Portfolio model of posts, stories and reels by month.',
+    type:'bar',
+    data:{
+      labels:['July','August','September'],
+      datasets:[
+        {label:'Posts',data:[12,18,22],backgroundColor:'rgba(232,41,74,.82)',borderRadius:8},
+        {label:'Stories',data:[28,35,40],backgroundColor:'rgba(10,126,164,.82)',borderRadius:8},
+        {label:'Reels',data:[6,10,14],backgroundColor:'rgba(91,79,202,.82)',borderRadius:8}
+      ]
+    },
+    options:{
+      plugins:{legend:{position:'bottom'}},
+      scales:{x:{grid:{display:false}}}
+    }
+  },
+  engagement:{
+    title:'Engagement contribution by content type',
+    desc:'Model showing which formats usually drive highest interaction.',
+    type:'doughnut',
+    data:{
+      labels:['Reels','Carousels','Stories','Static Posts'],
+      datasets:[{
+        data:[42,28,20,10],
+        backgroundColor:['#E8294A','#0A7EA4','#5B4FCA','#C9933A'],
+        borderWidth:0
+      }]
+    },
+    options:{
+      cutout:'62%',
+      plugins:{legend:{position:'bottom'}}
+    }
+  },
+  skills:{
+    title:'Skill proficiency overview',
+    desc:'Balanced analytics, marketing, AI and communication profile.',
+    type:'radar',
+    data:{
+      labels:['Analytics','Marketing','AI Tools','Data Viz','Research','Communication'],
+      datasets:[{
+        data:[84,88,86,82,78,92],
+        borderColor:'#E8294A',
+        backgroundColor:'rgba(232,41,74,.11)',
+        pointBackgroundColor:'#E8294A'
+      }]
+    },
+    options:{
+      plugins:{legend:{display:false}},
+      scales:{r:{min:0,max:100,ticks:{display:false}}}
+    }
+  }
+};
+
+function renderMain(key){
+  if(rotatingChart) rotatingChart.destroy();
+
+  const s=chartSpecs[key];
+  document.getElementById('chartTitle').textContent=s.title;
+  document.getElementById('chartDesc').textContent=s.desc;
+
+  rotatingChart=new Chart(document.getElementById('rotatingChart'),{
+    type:s.type,
+    data:s.data,
+    options:{responsive:true,maintainAspectRatio:false,...s.options}
+  });
+
+  document.querySelectorAll('[data-chart]').forEach(b=>{
+    b.classList.toggle('active',b.dataset.chart===key);
+  });
+}
+
+renderMain('growth');
+
+let keys=['growth','mix','engagement','skills'];
+let idx=0;
+
+setInterval(()=>{
+  idx=(idx+1)%keys.length;
+  renderMain(keys[idx]);
+},4200);
+
+document.querySelectorAll('[data-chart]').forEach(b=>{
+  b.onclick=()=>{
+    idx=keys.indexOf(b.dataset.chart);
+    renderMain(b.dataset.chart);
+  };
+});
+
+/* Case study chart */
+let caseChart;
+
+const caseSpecs={
+  drivers:{
+    title:'Choice drivers: Starbucks vs Coffee Day',
+    desc:'Relative score by decision factor. Portfolio-model values.',
+    type:'bar',
+    data:{
+      labels:['Ambience','Price Value','Customization','Convenience','Loyalty/App','Social Image'],
+      datasets:[
+        {label:'Starbucks',data:[92,58,88,76,84,90],backgroundColor:'rgba(0,98,65,.82)',borderRadius:8},
+        {label:'Coffee Day',data:[72,84,58,80,52,62],backgroundColor:'rgba(201,147,58,.85)',borderRadius:8}
+      ]
+    },
+    options:{
+      plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,.75)'}}},
+      scales:{
+        x:{ticks:{color:'rgba(255,255,255,.7)'},grid:{display:false}},
+        y:{ticks:{color:'rgba(255,255,255,.7)'},grid:{color:'rgba(255,255,255,.08)'}}
+      }
+    }
+  },
+  loyalty:{
+    title:'Loyalty funnel comparison',
+    desc:'From trial to repeat to advocacy. Portfolio-model values.',
+    type:'line',
+    data:{
+      labels:['Aware','First Visit','Repeat Visit','Reward Use','Advocate'],
+      datasets:[
+        {label:'Starbucks',data:[92,78,62,48,36],borderColor:'#16A36B',backgroundColor:'rgba(22,163,107,.13)',fill:true,tension:.38},
+        {label:'Coffee Day',data:[86,72,52,26,20],borderColor:'#C9933A',backgroundColor:'rgba(201,147,58,.12)',fill:true,tension:.38}
+      ]
+    },
+    options:{
+      plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,.75)'}}},
+      scales:{
+        x:{ticks:{color:'rgba(255,255,255,.7)'},grid:{display:false}},
+        y:{ticks:{color:'rgba(255,255,255,.7)'},grid:{color:'rgba(255,255,255,.08)'}}
+      }
+    }
+  },
+  segments:{
+    title:'Urban youth café segments',
+    desc:'Model segmentation for survey/research presentation.',
+    type:'doughnut',
+    data:{
+      labels:['Loyal Starbucks','CCD Value Seekers','Café Hoppers','Occasional Visitors'],
+      datasets:[{
+        data:[30,24,32,14],
+        backgroundColor:['#16A36B','#C9933A','#E8294A','#5B4FCA'],
+        borderWidth:0
+      }]
+    },
+    options:{
+      cutout:'62%',
+      plugins:{legend:{position:'bottom',labels:{color:'rgba(255,255,255,.75)'}}}
+    }
+  },
+  moments:{
+    title:'Experience moments that influence loyalty',
+    desc:'Which moments most affect repeat visits. Portfolio-model values.',
+    type:'bar',
+    data:{
+      labels:['Entry Ambience','Ordering','Wait Time','Taste Consistency','Seating Comfort','Rewards'],
+      datasets:[{
+        label:'Impact score',
+        data:[82,70,64,88,78,76],
+        backgroundColor:'rgba(232,41,74,.82)',
+        borderRadius:8
+      }]
+    },
+    options:{
+      indexAxis:'y',
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{ticks:{color:'rgba(255,255,255,.7)'},grid:{color:'rgba(255,255,255,.08)'}},
+        y:{ticks:{color:'rgba(255,255,255,.7)'},grid:{display:false}}
+      }
+    }
+  }
+};
+
+function renderCase(key){
+  if(caseChart) caseChart.destroy();
+
+  const s=caseSpecs[key];
+  document.getElementById('caseTitle').textContent=s.title;
+  document.getElementById('caseDesc').textContent=s.desc;
+
+  caseChart=new Chart(document.getElementById('caseChart'),{
+    type:s.type,
+    data:s.data,
+    options:{responsive:true,maintainAspectRatio:false,...s.options}
+  });
+
+  document.querySelectorAll('[data-case]').forEach(b=>{
+    b.classList.toggle('active',b.dataset.case===key);
+  });
+}
+
+renderCase('drivers');
+
+let ck=['drivers','loyalty','segments','moments'];
+let ci2=0;
+
+setInterval(()=>{
+  ci2=(ci2+1)%ck.length;
+  renderCase(ck[ci2]);
+},5200);
+
+document.querySelectorAll('[data-case]').forEach(b=>{
+  b.onclick=()=>{
+    ci2=ck.indexOf(b.dataset.case);
+    renderCase(b.dataset.case);
+  };
+});
+
+/* Smooth 3D live-card tilt movement */
+document.querySelectorAll('.live-card,.card,.kpi-card,.wf,.skill,.contact-card,.action-card,.ats-item,.score-card,.chart-card,.brand-card,.dark-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const r=card.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-.5;
     const y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateY(-4px)`;
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform='';});
-});
 
+    card.style.transform =
+      `perspective(1000px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*4).toFixed(2)}deg) translateY(-5px)`;
+  });
+
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+  });
+});
 </script>
 </body>
 </html>
